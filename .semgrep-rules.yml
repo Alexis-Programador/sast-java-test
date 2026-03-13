@@ -1,0 +1,19 @@
+rules:
+
+- id: java-sql-injection
+  pattern: $QUERY = "SELECT ..." + $VAR
+  message: Possible SQL Injection - concatenating user input in SQL query
+  languages: [java]
+  severity: ERROR
+
+- id: java-command-injection
+  pattern: Runtime.getRuntime().exec($CMD)
+  message: Possible Command Injection
+  languages: [java]
+  severity: ERROR
+
+- id: hardcoded-password
+  pattern: String $PASS = "..."
+  message: Hardcoded password detected
+  languages: [java]
+  severity: WARNING
